@@ -1,0 +1,35 @@
+import pandas as pd
+from tqdm import tqdm
+import argparse
+from prompts import definition, base_prompt_for_hate, base_prompt_for_moral, hate_moral_combined, hate_moral_combined_with_definition, hate_with_definition
+from llm_models import Model
+parser = argparse.ArgumentParser()
+
+data = pd.read_csv("HateBR-MoralXplain-Dataset.csv")
+
+parser.add_argument("--model", type=str, default="gpt-4o", choices=["gpt-4o", "llama70b"])
+parser.add_argument("--prompt_type", type=str, default="base_hate", choices=["base_hate", "base_moral","hate_moral", "hate_wdefinition", "base_moral_wdefinition"])
+args = parser.parse_args()
+
+model = Model(args.model)
+
+if args.prompt_type == "base_hate":
+    prompt = base_prompt_for_hate
+elif args.prompt_type == "base_moral":
+    prompt = base_prompt_for_moral
+elif args.prompt_type == "hate_moral":
+    prompt = hate_moral_combined
+elif args.prompt_type == "hate_wdefinition":
+    prompt = hate_with_definition.replace("{definition}", definition)
+elif args.prompt_type == "base_moral_wdefinition":
+    prompt = hate_moral_combined_with_definition.replace("{definition}", definition)
+else:
+    raise Exception("prompt type not found")
+
+prompts = []
+for text in data["comment"]:
+    temp_prompt = prompt.replace("{text}", text)
+    prompts.append(temp_prompt)
+
+data[f"{args.model}_{args.prompt_type}"] = model.run(prompts)
+data.to_csv(f"{args.model}_preds/{args.prompt_type}.csv",index=False)
