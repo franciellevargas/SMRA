@@ -1,14 +1,14 @@
 import pandas as pd
 from tqdm import tqdm
 import argparse
-from prompts import definition, base_prompt_for_hate, base_prompt_for_moral, hate_moral_combined, hate_moral_combined_with_definition, hate_with_definition
+from prompts import definition, base_prompt_for_hate, base_prompt_for_moral, hate_moral_combined, hate_moral_combined_with_definition, hate_with_definition, moral_with_definition
 from llm_models import Model
 parser = argparse.ArgumentParser()
 
 data = pd.read_csv("HateBR-MoralXplain-Dataset.csv")
 
 parser.add_argument("--model", type=str, default="gpt-4o", choices=["gpt-4o", "llama70b"])
-parser.add_argument("--prompt_type", type=str, default="base_hate", choices=["base_hate", "base_moral","hate_moral", "hate_wdefinition", "base_moral_wdefinition"])
+parser.add_argument("--prompt_type", type=str, default="base_hate", choices=["base_hate", "base_moral","hate_moral", "hate_wdefinition", "hate_moral_wdefinition", "moral_wdefinition"])
 args = parser.parse_args()
 
 model = Model(args.model)
@@ -21,8 +21,10 @@ elif args.prompt_type == "hate_moral":
     prompt = hate_moral_combined
 elif args.prompt_type == "hate_wdefinition":
     prompt = hate_with_definition.replace("{definition}", definition)
-elif args.prompt_type == "base_moral_wdefinition":
+elif args.prompt_type == "hate_moral_wdefinition":
     prompt = hate_moral_combined_with_definition.replace("{definition}", definition)
+elif args.prompt_type == "moral_wdefinition":
+    prompt = moral_with_definition.replace("{definition}", definition)
 else:
     raise Exception("prompt type not found")
 

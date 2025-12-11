@@ -17,10 +17,9 @@ The Moral Foundations Theory framework represents core ethical ad psychological 
 - loyalty vs betrayal: morals related to group-based morality, where loyalty refers to solidarity, allegiance, and in-group defense, while betrayal signals disloyalty or abandonment of one’s group.
 - authority vs subversion: morals related to respect for tradition, and legitimate hierarchies, with authority indicating respect or deference to leadership or norms, and subversion indicating rebellion, disrespect, or disobedience.
 - sanctity vs degradation: morals related to purity, contamination, with Purity is associated with cleanliness, modesty, or moral elevation, while degradation includes defilement, obscenity,or perceived corruption.
-You can choose up to three values.
 
 Provide your analysis in this exact format:
-moral_value: [up to three most prominent moral foundations from: care, harm, fairness, cheating, authority, subversion, sanctity, degradation, loyalty, betrayal. If no clear moral foundation applies, write "None"]
+moral_value: [the single most prominent moral foundations from: care, harm, fairness, cheating, authority, subversion, sanctity, degradation, loyalty, betrayal. If no clear moral foundation applies, write "None"]
 explanation: [provide a brief evidence based justification, specifically highlighting the words or phrases that triggered your moral value classification. If none, write "None"]
 
 Provide ONLY the required output format with no additional text, explanations, or justifications.
@@ -34,11 +33,10 @@ The Moral Foundations Theory framework represents core ethical ad psychological 
 - loyalty vs betrayal: morals related to group-based morality, where loyalty refers to solidarity, allegiance, and in-group defense, while betrayal signals disloyalty or abandonment of one’s group.
 - authority vs subversion: morals related to respect for tradition, and legitimate hierarchies, with authority indicating respect or deference to leadership or norms, and subversion indicating rebellion, disrespect, or disobedience.
 - sanctity vs degradation: morals related to purity, contamination, with Purity is associated with cleanliness, modesty, or moral elevation, while degradation includes defilement, obscenity,or perceived corruption.
-You can choose up to three values.
 
 Provide your analysis in this exact format:
 hate_label: [YES if the text contains hate speech, NO otherwise]
-moral_value: [up to three most prominent moral foundations from: care, harm, fairness, cheating, authority, subversion, sanctity, degradation, loyalty, betrayal. If no clear moral foundation applies, write "None"]
+moral_value: [the single most prominent moral foundations from: care, harm, fairness, cheating, authority, subversion, sanctity, degradation, loyalty, betrayal. If no clear moral foundation applies, write "None"]
 explanation: [provide a brief evidence based justification, specifically highlighting the words or phrases that triggered your moral value classification. If none, write "None"]
 
 Provide ONLY the required output format with no additional text, explanations, or justifications."""
@@ -51,7 +49,7 @@ hate_label: [YES if the text contains hate speech, NO otherwise]
 Provide ONLY the required output format with no additional text, explanations, or justifications.
 """
 
-hate_moral_combined_with_definition = """Analyze the following text "{text}" for hate speech and identify its underlying moral value dimensions:
+moral_with_definition = """Identify the underlying moral value dimensions in the following text "{text}".
 The Moral Foundations Theory framework represents core ethical ad psychological concerns that come in paired positive vs negative expressions:
 - care vs harm: Involves concern for the well-being of others, with virtues expressed through care, protection, or nurturance, and vices involving harm, cruelty, or indifference to suffering.
 - fairness vs cheating: morals related to justice, rights, and reciprocity, with fairness indicating equity, rule-following, and cheating denoting exploitation, dishonesty, or manipulation.
@@ -62,8 +60,24 @@ You can choose up to three values.
 {definition}
 
 Provide your analysis in this exact format:
-hate_label: [YES if the text contains hate speech, NO otherwise]
 moral_value: [up to three most prominent moral foundations from: care, harm, fairness, cheating, authority, subversion, sanctity, degradation, loyalty, betrayal. If no clear moral foundation applies, write "None"]
+explanation: [provide a brief evidence based justification, specifically highlighting the words or phrases that triggered your moral value classification. If none, write "None"]
+
+Provide ONLY the required output format with no additional text, explanations, or justifications.
+"""
+
+hate_moral_combined_with_definition = """Analyze the following text "{text}" for hate speech and identify its underlying moral value dimensions:
+The Moral Foundations Theory framework represents core ethical ad psychological concerns that come in paired positive vs negative expressions:
+- care vs harm: Involves concern for the well-being of others, with virtues expressed through care, protection, or nurturance, and vices involving harm, cruelty, or indifference to suffering.
+- fairness vs cheating: morals related to justice, rights, and reciprocity, with fairness indicating equity, rule-following, and cheating denoting exploitation, dishonesty, or manipulation.
+- loyalty vs betrayal: morals related to group-based morality, where loyalty refers to solidarity, allegiance, and in-group defense, while betrayal signals disloyalty or abandonment of one’s group.
+- authority vs subversion: morals related to respect for tradition, and legitimate hierarchies, with authority indicating respect or deference to leadership or norms, and subversion indicating rebellion, disrespect, or disobedience.
+- sanctity vs degradation: morals related to purity, contamination, with Purity is associated with cleanliness, modesty, or moral elevation, while degradation includes defilement, obscenity,or perceived corruption.
+{definition}
+
+Provide your analysis in this exact format:
+hate_label: [YES if the text contains hate speech, NO otherwise]
+moral_value: [the single most prominent moral foundations from: care, harm, fairness, cheating, authority, subversion, sanctity, degradation, loyalty, betrayal. If no clear moral foundation applies, write "None"]
 explanation: [provide a brief evidence based justification, specifically highlighting the words or phrases that triggered your moral value classification. If none, write "None"]
 
 Provide ONLY the required output format with no additional text, explanations, or justifications."""
