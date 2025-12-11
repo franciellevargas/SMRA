@@ -56,11 +56,10 @@ The Moral Foundations Theory framework represents core ethical ad psychological 
 - loyalty vs betrayal: morals related to group-based morality, where loyalty refers to solidarity, allegiance, and in-group defense, while betrayal signals disloyalty or abandonment of one’s group.
 - authority vs subversion: morals related to respect for tradition, and legitimate hierarchies, with authority indicating respect or deference to leadership or norms, and subversion indicating rebellion, disrespect, or disobedience.
 - sanctity vs degradation: morals related to purity, contamination, with Purity is associated with cleanliness, modesty, or moral elevation, while degradation includes defilement, obscenity,or perceived corruption.
-You can choose up to three values.
 {definition}
 
 Provide your analysis in this exact format:
-moral_value: [up to three most prominent moral foundations from: care, harm, fairness, cheating, authority, subversion, sanctity, degradation, loyalty, betrayal. If no clear moral foundation applies, write "None"]
+moral_value: [the single most prominent moral foundations from: care, harm, fairness, cheating, authority, subversion, sanctity, degradation, loyalty, betrayal. If no clear moral foundation applies, write "None"]
 explanation: [provide a brief evidence based justification, specifically highlighting the words or phrases that triggered your moral value classification. If none, write "None"]
 
 Provide ONLY the required output format with no additional text, explanations, or justifications.

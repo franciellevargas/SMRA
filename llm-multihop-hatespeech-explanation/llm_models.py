@@ -41,6 +41,8 @@ class Model:
                 output = chat_completion.choices[0].message.content.strip()
                 outputs.append(output)
         else:
+            messages = [[{"role": "system", "content": "You are a social psychologist specializing in moral psychology and hate speech classification"},
+                {"role": "user","content": prompt}] for prompt in prompts]
             responses = self.model.chat(messages, self.params)
             outputs = [output.outputs[0].text for output in responses]
         return outputs
