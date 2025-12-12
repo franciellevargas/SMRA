@@ -1,7 +1,9 @@
 import pandas as pd
 from tqdm import tqdm
 import argparse
-from prompts import definition, base_prompt_for_hate, base_prompt_for_moral, hate_moral_combined, hate_moral_combined_with_definition, hate_with_definition, moral_with_definition
+from prompts import definition, context, base_prompt_for_hate, base_prompt_for_moral, \
+    hate_moral_combined, hate_moral_combined_with_definition, hate_with_definition, \
+        moral_with_definition, hate_moral_combined_context, hate_context, moral_context
 from llm_models import Model
 parser = argparse.ArgumentParser()
 
@@ -15,10 +17,16 @@ model = Model(args.model)
 
 if args.prompt_type == "base_hate":
     prompt = base_prompt_for_hate
+elif args.prompt_type == "hate_context":
+    prompt = hate_context.replace("{context}", context)
 elif args.prompt_type == "base_moral":
     prompt = base_prompt_for_moral
+elif args.prompt_type == "moral_context":
+    prompt = moral_context.replace("{context}", context)
 elif args.prompt_type == "hate_moral":
     prompt = hate_moral_combined
+elif args.prompt_type == "hate_moral_context":
+    prompt = hate_moral_combined_context.replace("{context}", context)
 elif args.prompt_type == "hate_wdefinition":
     prompt = hate_with_definition.replace("{definition}", definition)
 elif args.prompt_type == "hate_moral_wdefinition":
