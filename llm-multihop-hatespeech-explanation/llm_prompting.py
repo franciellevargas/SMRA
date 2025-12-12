@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser()
 data = pd.read_csv("HateBR-MoralXplain-Dataset.csv")
 
 parser.add_argument("--model", type=str, default="gpt-4o", choices=["gpt-4o", "llama70b"])
-parser.add_argument("--prompt_type", type=str, default="base_hate", choices=["base_hate", "base_moral","hate_moral", "hate_wdefinition", "hate_moral_wdefinition", "moral_wdefinition"])
+parser.add_argument("--prompt_type", type=str, default="base_hate", choices=["base_hate","hate_context","moral_context","hate_moral_context","base_moral","hate_moral", "hate_wdefinition", "hate_moral_wdefinition", "moral_wdefinition"])
 args = parser.parse_args()
 
 model = Model(args.model)
