@@ -7,12 +7,17 @@ from prompts import definition, context, base_prompt_for_hate, base_prompt_for_m
 from llm_models import Model
 parser = argparse.ArgumentParser()
 
-data = pd.read_csv("HateBR-MoralXplain-Dataset.csv")
 
 parser.add_argument("--model", type=str, default="gpt-4o", choices=["gpt-4o", "llama70b"])
 parser.add_argument("--prompt_type", type=str, default="base_hate", choices=["base_hate","hate_context","moral_context","hate_moral_context","base_moral","hate_moral", "hate_wdefinition", "hate_moral_wdefinition", "moral_wdefinition"])
+parser.add_argument("--language", type=str, default="pt", choices=["en", "pt"])
+
 args = parser.parse_args()
 
+if args.language == "pt":
+    data = pd.read_csv("HateBR-MoralXplain-Dataset.csv")
+else:# en
+    data = pd.read_csv("HateBR-MoralXplain-Dataset_end.csv")
 model = Model(args.model)
 
 if args.prompt_type == "base_hate":
