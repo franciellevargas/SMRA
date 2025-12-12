@@ -17,7 +17,7 @@ args = parser.parse_args()
 if args.language == "pt":
     data = pd.read_csv("HateBR-MoralXplain-Dataset.csv")
 else:# en
-    data = pd.read_csv("HateBR-MoralXplain-Dataset_end.csv")
+    data = pd.read_csv("../english_translations/HateBR-MoralXplain-Dataset_en.csv")
 model = Model(args.model)
 
 if args.prompt_type == "base_hate":
