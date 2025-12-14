@@ -49,4 +49,4 @@ for text in data["comment"]:
     prompts.append(temp_prompt)
 
 data[f"{args.model}_{args.prompt_type}"] = model.run(prompts)
-data.to_csv(f"{args.model}_preds/{args.prompt_type}.csv",index=False)
+data.to_csv(f"{args.model}_preds/{args.prompt_type}_{args.language}.csv",index=False)
