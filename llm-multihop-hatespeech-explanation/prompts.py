@@ -124,4 +124,8 @@ explanation: [provide a brief evidence based justification, specifically highlig
 
 Provide ONLY the required output format with no additional text, explanations, or justifications."""
 
-
+# this is the same ablation prompt used in the previous work
+ablation_prompt = """Analyze the following text "{text}" for hate speech and identify its moral value:
+hate_label : [YES or NO]
+moral_value: [care, harm, fairness, cheating, authority, subversion, sanctity, degradation, loyalty, betrayal, None]
+explanation: [brief justification]"""

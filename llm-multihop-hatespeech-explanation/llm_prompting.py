@@ -3,13 +3,13 @@ from tqdm import tqdm
 import argparse
 from prompts import definition, context, base_prompt_for_hate, base_prompt_for_moral, \
     hate_moral_combined, hate_moral_combined_with_definition, hate_with_definition, \
-        moral_with_definition, hate_moral_combined_context, hate_context, moral_context
+        moral_with_definition, hate_moral_combined_context, hate_context, moral_context, ablation_prompt
 from llm_models import Model
 parser = argparse.ArgumentParser()
 
 
 parser.add_argument("--model", type=str, default="gpt-4o", choices=["gpt-4o", "llama70b"])
-parser.add_argument("--prompt_type", type=str, default="base_hate", choices=["base_hate","hate_context","moral_context","hate_moral_context","base_moral","hate_moral", "hate_wdefinition", "hate_moral_wdefinition", "moral_wdefinition"])
+parser.add_argument("--prompt_type", type=str, default="base_hate", choices=["ablation", "base_hate","hate_context","moral_context","hate_moral_context","base_moral","hate_moral", "hate_wdefinition", "hate_moral_wdefinition", "moral_wdefinition"])
 parser.add_argument("--language", type=str, default="pt", choices=["en", "pt"])
 
 args = parser.parse_args()
@@ -38,6 +38,8 @@ elif args.prompt_type == "hate_moral_wdefinition":
     prompt = hate_moral_combined_with_definition.replace("{definition}", definition)
 elif args.prompt_type == "moral_wdefinition":
     prompt = moral_with_definition.replace("{definition}", definition)
+elif args.prompt_type == "ablation":
+    prompt = ablation_prompt
 else:
     raise Exception("prompt type not found")
 
