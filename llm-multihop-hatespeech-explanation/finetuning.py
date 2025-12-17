@@ -18,10 +18,10 @@ class Classifier(torch.nn.Module):
         self.dense = torch.nn.Linear(self.embedder.config.hidden_size, num_labels)
     
     def forward(self, text):
-        tokens = self.tokenizer(text, return_tensors='pt', padding="max_length", truncation=True).to(self.embedder.device)
-        outputs = self.embedder(**tokens)
+        tokens = self.tokenizer(text, return_tensors='pt', padding=True, truncation=True).to(self.embedder.device)
+        outputs = self.embedder(**tokens, output_hidden_states=True, return_dict=True)
 
-        lhs = outputs.last_hidden_state
+        lhs = outputs.hidden_states[-1]
         cls_output = lhs[:, 0, :]
 
         return self.dense(cls_output)
