@@ -31,8 +31,9 @@ class Data(Dataset):
         super().__init__()
         self.data = data
         self.data["annotator1_moralA"] = self.data["annotator1_moralA"].apply(lambda x: x.replace("LM","NM"))
+        self.data["annotator1_moralA"] = self.data["annotator1_moralA"].apply(lambda x: x.replace("0","NM"))
         self.task = task
-        targets = ["HP", "FN", "FP", "LN", "LP", "AN", "AP", "PN" ,"PP", "NM"]
+        targets = ["HN", "HP", "FN", "FP", "LN", "LP", "AN", "AP", "PN" ,"PP", "NM"]
         self.target_mappings = {target: i for i, target in enumerate(targets)}
         
     def __len__(self):
@@ -70,7 +71,7 @@ best_epoch = -1
 best_val_loss = 1000000
 best_lr = -1
 for lr in [0.01, 0.001, 0.0001, 0.00001, 0.05,0.005,0.0005, 0.00005]:
-    classifier = Classifier(num_labels=2 if task == "hate" else 10).to(device)
+    classifier = Classifier(num_labels=2 if task == "hate" else 11).to(device)
     loss_fn = CrossEntropyLoss()#
     optimizer = AdamW(classifier.parameters(), lr=lr)
 
